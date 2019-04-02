@@ -1,6 +1,7 @@
 package main;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +12,16 @@ public class GrantRecordParser {
 
         for (String record : records) {
             String[] recordArray = record.split(",");
+            String employeeID = recordArray[1];
 
-            Employee employee = findOrCreateEmployee(recordArray[1], parserResult.getEmployees());
+            List<Employee> employeeList = parserResult.getEmployees().stream().filter(x -> x._EmployeeId == employeeID).collect(Collectors.toList());
+
+            Employee employee;
+            if (employeeList.isEmpty() ) {
+                employee = new Employee(employeeID);
+            } else {
+                employee = employeeList.get(0);
+            }
 
             String grantType = recordArray[0];
             LocalDate vestDate = convertVestDate(recordArray[2]);
@@ -29,19 +38,11 @@ public class GrantRecordParser {
         }
 
         return parserResult;
-
     }
 
     private LocalDate convertVestDate(String vestDate) {
-        return LocalDate.parse(vestDate);
-    }
-
-    private Employee findOrCreateEmployee(String employeeId, List<Employee> employees) {
-        List<Employee> employeeList = employees.stream().filter(x -> x._EmployeeId == employeeId).collect(Collectors.toList());
-        if (employeeList.isEmpty()) {
-            return new Employee(employeeId);
-        }
-        return employeeList.get(0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        return LocalDate.parse(vestDate, formatter);
     }
 
 }
