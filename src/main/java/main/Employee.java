@@ -6,8 +6,12 @@ public class Employee{
     String _EmployeeId;
     ArrayList<GrantPK> _Grants;
 
-    public Employee(){
+    public Employee(String employeeId){
+        _EmployeeId = employeeId;
+    }
 
+    public void addGrant(GrantPK grantPk) {
+        _Grants.add(grantPk);
     }
 
 }

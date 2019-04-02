@@ -7,9 +7,9 @@ public class Grant{
     String _grantType;
     LocalDate _vestDate;
     int _totalShares;
-    int _grantPrice;
+    double _grantPrice;
 
-    public Grant(String grantType, LocalDate vestDate, int totalShare, int grantPrice){
+    public Grant(String grantType, LocalDate vestDate, int totalShare, double grantPrice){
         grantId = GrantPK.of(1);
         _grantType = grantType;
         _vestDate = vestDate;

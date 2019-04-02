@@ -11,7 +11,6 @@ public class App {
         String saleRecord = importer.getSaleRecord(inputString);
         List<String> vestDateRecords = importer.getVestDateRecords(inputString);
 
-
     }
 
     public String testMethod(String string) {
