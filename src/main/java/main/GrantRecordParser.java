@@ -21,7 +21,7 @@ public class GrantRecordParser {
             Grant grant = new Grant(grantType, vestDate, shareCount, sharePrice);
 
 
-            employee.addGrant(grant.grantId);
+            employee.addGrant(grant._grantId);
 
 
 
