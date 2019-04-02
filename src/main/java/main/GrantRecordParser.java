@@ -1,7 +1,6 @@
 package main;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,7 @@ public class GrantRecordParser {
             double sharePrice = Double.valueOf(recordArray[4]);
             Grant grant = new Grant(grantType, vestDate, shareCount, sharePrice);
 
-            employee.addGrant(grant._grantId);
+            employee.addGrant(grant.getGrantId());
 
             if (!parserResult.getEmployees().contains(employee)) {
                 parserResult.addEmployee(employee);

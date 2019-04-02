@@ -2,15 +2,15 @@ package main;
 
 import java.util.ArrayList;
 
-public class Employee{
+class Employee{
     String _EmployeeId;
-    ArrayList<GrantPK> _Grants;
+    ArrayList<GrantPK> _Grants = new ArrayList<>();
 
-    public Employee(String employeeId){
+    Employee(String employeeId){
         _EmployeeId = employeeId;
     }
 
-    public void addGrant(GrantPK grantPk) {
+    void addGrant(GrantPK grantPk) {
         _Grants.add(grantPk);
     }
 }
